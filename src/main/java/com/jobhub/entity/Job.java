@@ -72,11 +72,11 @@ public class Job {
         this.salary = salary;
     }
 
-    public String getJobtype() {
+    public String getJobType() {
         return jobType;
     }
 
-    public void setJobtype(String jobtype) {
-        this.jobType = jobtype;
+    public void setJobType(String jobType) {
+        this.jobType = jobType;
     }
 }
