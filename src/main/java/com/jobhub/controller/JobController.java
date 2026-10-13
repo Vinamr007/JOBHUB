@@ -1,9 +1,11 @@
 package com.jobhub.controller;
 
 
+import com.jobhub.dto.JobRequest;
 import com.jobhub.entity.Job;
 import com.jobhub.exception.JobNotFoundException;
 import com.jobhub.service.JobService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,7 +24,14 @@ public class JobController {
 
 
     @PostMapping
-    public Job addJob(@RequestBody Job job) {
+    public Job addJob(@Valid @RequestBody JobRequest request) {
+        Job job = new Job();
+        job.setTitle(request.getTitle());
+        job.setDescription(request.getDescription());
+        job.setLocation(request.getLocation());
+        job.setSalary(request.getSalary());
+        job.setJobType(request.getJobType());
+
         return jobService.createJob(job);
     }
 
